@@ -35,7 +35,9 @@ git clone https://github.com/TIberiu99p/hangman423.git
 ## Usage
 Open a command line, navigate to the script's directory, and run:
 ```
-python word_guessing_game.py
+python milestone2.py
+python milestone3.py
+python hangman_Template.py
 ```
 Follow the on-screen prompts to guess letters in the selected word.
 
