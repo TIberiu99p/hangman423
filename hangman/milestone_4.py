@@ -19,7 +19,9 @@ class Hangman:
         if guess not in self.list_of_guesses:
             self.num_letters -= 1
         else:
+            self.num_lives -= 1
             print(f"{self.guess} not in the word try again")
+            print(f"You have {self.num_lives} lives left.")
             
 
     def ask_for_input(self):
