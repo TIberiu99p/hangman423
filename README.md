@@ -25,9 +25,13 @@ Create variables for the game
 Check if the guessed character is in the word
 `milestone_3.py`
 
+## Milestone 4
+Create the Game class
+`milestone_4py`
+
 ## Latest Updates 
 
-### Enhanced Guessing Logic
+### Enhanced Guessing Logic (Milestone 4)
 The Hangman game has seen significant improvements in its guessing logic, making the gameplay more intuitive and challenging:
 
 1. **Guess Validation:**
