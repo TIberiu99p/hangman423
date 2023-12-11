@@ -10,12 +10,17 @@ class Hangman:
         self.list_of_guesses = []#A list of the guesses that have already been tried.Set up to empty initially 
 
     def check_guess(self,guess):  
-        if guess.lower() in self.word:
+        guess = guess.lower()
+        if guess in self.word:
             print(f"{guess} is in {word}")
-            return True
+            for index, letter in enumerate(self.word):
+                if letter == guess:
+                    self.word_guessed[index] = guess
+        if guess not in self.list_of_guesses:
+            self.num_letters -= 1
         else:
             print(f"{self.guess} not in the word try again")
-            return False
+            
 
     def ask_for_input(self):
         while True:
