@@ -10,22 +10,24 @@ class Hangman:
         self.list_of_guesses = []#A list of the guesses that have already been tried.Set up to empty initially 
 
     def check_guess(self,guess):  
-        guess = guess.lower()
         if guess in self.word:
             print(f"{guess} is in {word}")
             for index, letter in enumerate(self.word):
-                if letter == guess:
+                if letter == guess and self.word_guessed == '_':
                     self.word_guessed[index] = guess
-        if guess not in self.list_of_guesses:
-            self.num_letters -= 1
+                    self.num_letters -= 1
         else:
             self.num_lives -= 1
             print(f"{self.guess} not in the word try again")
             print(f"You have {self.num_lives} lives left.")
-            
+
+        if guess not in self.list_of_guesses:
+            self.list_of_guesses.append(guess)    
+
+
 
     def ask_for_input(self):
-        while True:
+        while self.num_lives > 0 and '_' in self.word_guessed:
             guess = input("Enter a character").lower()
 
             if not guess.isalpha() or len(guess) != 1:
@@ -33,5 +35,9 @@ class Hangman:
             elif guess in self.list_of_guesses:
                 print("You already tried that letter")
             else:
-                self.list_of_guesses.append(guess)
                 self.check_guess(guess)
+        
+        if '_' not in self.word_guessed:
+            print("Congratulations! You guessed the word!")
+        else:
+            print(f"Game over! The word was: {self.word}")
