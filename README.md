@@ -57,6 +57,39 @@ The game now meticulously tracks and updates several key elements to enhance the
 - Improved user feedback messages.
 - Optimized the loop in check_guess.
 
+
+### Hangman Game - Milestone 5 Documentation
+
+#### Overview
+In Milestone 5 of the Hangman game project, we focused on refining the game logic, enhancing user interaction, and encapsulating the game flow within a standalone function. This milestone ensures a more robust, user-friendly, and maintainable codebase.
+
+####Key Features and Changes
+
+1. **Hangman Class Refinement**
+- **Random Word Selection:** The `Hangman` class randomly selects a word from a provided list, starting a new game instance with this word.
+- **Guess Checking:** Enhanced the `check_guess` method to accurately update the game state (guessed letters and remaining lives) based on user input.
+- **Improved User Feedback:** Included informative messages for successful guesses, incorrect guesses, and repeat attempts.
+
+2. **Game Flow Management**
+- **`play_game` Function:** Introduced a new function to manage the overall game flow. This function initializes the game, keeps track of lives, and checks for win/lose conditions.
+
+3. **Game Loop**
+- Win/Lose Conditions: The game loop in `play_game` continuously prompts the user for input until the player either guesses the word correctly (wins) or runs out of lives (loses).
+- **User Input Validation:** The game now checks for valid input (single alphabetical characters) and handles invalid or repeated guesses gracefully.
+
+4. **User Experience**
+- Enhanced Interaction:** The game provides real-time feedback about correct guesses, incorrect guesses, and the remaining number of lives.
+- Endgame Messages:** Custom messages are displayed to the user upon winning or losing the game.
+
+#### Usage
+To play the game, run the `milestone_5.py` script. The game will prompt you to guess letters for a randomly chosen word. Your goal is to guess the word before running out of lives.
+
+#### Example Invocation:
+```python
+word_list = ['python', 'hangman', 'programming']
+play_game(word_list)
+```
+
 ## Installation
 Ensure Python is installed on your system. Download and install Python from [python.org](https://www.python.org/downloads/).
 
