@@ -50,6 +50,13 @@ The game now meticulously tracks and updates several key elements to enhance the
 - **Number of Unique Letters Left:** The game keeps track of the number of unique letters in the word that have not been guessed yet, providing players with a measure of their progress.
 - **Lives Count:** Reflecting the classic Hangman element, the game now has a 'lives' system, where incorrect guesses decrement the player's available lives, adding a layer of challenge to the game.
 
+### Recent changes after milestone 4
+- Fixed the check_guess method to correctly handle guesses and update num_letters.
+- Added a game completion check in ask_for_input.
+- Ensured all instance variables are accessed with self.
+- Improved user feedback messages.
+- Optimized the loop in check_guess.
+
 ## Installation
 Ensure Python is installed on your system. Download and install Python from [python.org](https://www.python.org/downloads/).
 
