@@ -9,3 +9,22 @@ class Hangman:
         self.num_lives = num_lives#The number of lives the player has at the start of the game. 
         self.list_of_guesses = []#A list of the guesses that have already been tried.Set up to empty initially 
 
+    def check_guess(self,guess):  
+        if guess.lower() in self.word:
+            print(f"{guess} is in {word}")
+            return True
+        else:
+            print(f"{self.guess} not in the word try again")
+            return False
+
+    def ask_for_input(self):
+        while True:
+            guess = input("Enter a character").lower()
+
+            if not guess.isalpha() or len(guess) != 1:
+                print("Invalid letter. Please ,enter a single alphabetical character.")
+            elif guess in self.list_of_guesses:
+                print("You already tried that letter")
+            else:
+                self.list_of_guesses.append(guess)
+                self.check_guess(guess)
