@@ -1,7 +1,7 @@
 import random
 from difficulty import Difficulty
 from hint import Hint
-
+from drawHang import HangmanDrawing
 class Hangman:
     def __init__(self, word_list, num_lives=5):
         self.word_list = word_list
@@ -11,7 +11,7 @@ class Hangman:
         self.num_lives = num_lives
         self.list_of_guesses = []
         self.hint = Hint('words.json').get_hint(self.word)
-
+        self.hangman_drawing = HangmanDrawing()
 
     def check_guess(self, guess):
         if guess in self.word:
@@ -24,7 +24,9 @@ class Hangman:
             self.num_lives -= 1
             print(f"{guess} is not in the word. Try again.")
             print(f"You have {self.num_lives} lives left.")
-
+            drawing_stage = len(self.hangman_drawing.stages) - self.num_lives - 1
+            self.hangman_drawing.draw(drawing_stage)
+            
         if guess not in self.list_of_guesses:
             self.list_of_guesses.append(guess)
 
