@@ -12,6 +12,7 @@ class Hangman:
         self.list_of_guesses = []
         self.hint = Hint('words.json').get_hint(self.word)
 
+
     def check_guess(self, guess):
         if guess in self.word:
             print(f"{guess} is in the word.")
@@ -41,6 +42,9 @@ class Hangman:
             return None 
         else:
             return guess  
+
+    def show_hint(self):
+        print("Hint:", self.hint)
 
 def play_game(difficulty_level):
     print(f"Received difficulty level: {difficulty_level}")
