@@ -97,9 +97,30 @@ Key Features:
 - Modular Design: The game logic is encapsulated in hangman.py, ensuring clean separation of game mechanics from the user interface.
 - Enhanced User Experience: Improved game flow with clear instructions, input validation, and end-game scenarios, offering an engaging user experience.
 
-#### How to Play:
 
-Run the Hangman game by executing menu.py. Choose to start a new game, learn the rules, or exit the application from the main menu. Guess letters to uncover the hidden word and win the game before running out of lives!
+### Difficulty Levels
+- **Implemented Difficulty Levels**: The game now includes three difficulty levels: easy, medium, and hard. 
+- **Dynamic Word Selection**: Words are chosen based on the selected difficulty. Each difficulty level has a different set of words and a varying number of lives.
+- **JSON File Integration**: Words and their difficulty levels are stored in a JSON file, allowing for easy updates and expansion of the word list.
+
+#### Hint System
+- **Hint Functionality**: Players can now request hints to help them guess the word.
+- **Integration with JSON**: Hints for each word are stored alongside the words in the JSON file, allowing for easy management and updates.
+
+### Technical Enhancements
+
+#### Modular Design
+- The game has been split into multiple Python files for better code organization and readability:
+    - `menu.py`: Handles the game's main menu and user interactions.
+    - `milestone_5.py`: Contains the core game logic and the `Hangman` class.
+    - `difficulty.py`: Manages the game's difficulty levels and word selection.
+    - `hint.py`: Provides the hint functionality linked with the words.
+
+#### JSON Data Structure
+- The `words.json` file has been structured to store words along with their respective difficulty levels and hints, facilitating easy data management.
+
+### Running the Game
+To run the game, navigate to the directory containing the files and execute the following command in your terminal:
 ```python
 python menu.py
 ```
@@ -129,6 +150,9 @@ Follow the on-screen prompts to guess letters in the selected word.
 - `milestone_4.py`: milestone 4 and all of its task
 - `milestone_5.py`: milestone 3 and all of its task
 - `menu.py`: starts the game with a menu
+- `hint.py`: gives hints 
+- `difficulty.py`: allows change of difficulty
+- `words.json`: database for words and hints
 - `README.md`: Documentation of the project.
 
 ## License
