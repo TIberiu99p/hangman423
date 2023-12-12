@@ -14,5 +14,7 @@ class Difficulty:
         else:  # hard
             lives = 3
 
-        word = random.choice(self.words[level])
+        word_list = list(self.words[level].keys())        
+        word = random.choice(word_list)
+
         return word, lives
