@@ -48,6 +48,3 @@ def play_game(word_list):
             print('Congratulations. You won the game!')
             break
 
-# Example usage
-word_list = ['python', 'hangman', 'programming']
-play_game(word_list)
