@@ -20,14 +20,33 @@ class Menu:
         print("5. If you lose all lives, you lose the game.")
         print("6. Guess all letters correctly to win the game.")
 
+    def choose_difficulty(self):
+        print("Choose difficulty:")
+        print("1. Easy")
+        print("2. Medium")
+        print("3. Hard")
+        choice = input("Enter your choice (1-3): ")
+        if choice == '1':
+            print("Chosen difficulty: easy")
+            return 'easy'
+        elif choice == '2':
+            print("Chosen difficulty: medium")
+            return 'medium'
+        elif choice == '3':
+            print("Chosen difficulty: hard")
+            return 'hard'
+        else:
+            print("Invalid choice. Defaulting to Easy.")
+            return 'easy'
+
 def main():
     menu = Menu()
     
     while True:
-        print("Back to menu")
         choice = menu.display()
         if choice == '1':
-            play_game(menu.word_list)
+            difficulty_level = menu.choose_difficulty()
+            play_game(difficulty_level)
         elif choice == '2':
             menu.show_rules()
         elif choice == '3':

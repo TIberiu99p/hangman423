@@ -1,0 +1,14 @@
+{
+    "easy": {
+        "cat": "A small domesticated feline.",
+        "dog": "A loyal four-legged animal."
+    },
+    "medium": {
+        "python": "A popular programming language named after a comedy troupe.",
+        "hangman": "A word guessing game."
+    },
+    "hard": {
+        "encyclopedia": "A comprehensive reference work with articles on various topics.",
+        "quintessential": "Representing the most perfect example of a class or quality."
+    }
+}

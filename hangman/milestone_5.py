@@ -1,4 +1,6 @@
 import random
+from difficulty import Difficulty
+from hint import Hint
 
 class Hangman:
     def __init__(self, word_list, num_lives=5):
@@ -8,6 +10,7 @@ class Hangman:
         self.num_letters = len(set(self.word))
         self.num_lives = num_lives
         self.list_of_guesses = []
+        self.hint = Hint('words.json').get_hint(self.word)
 
     def check_guess(self, guess):
         if guess in self.word:
@@ -25,27 +28,41 @@ class Hangman:
             self.list_of_guesses.append(guess)
 
     def ask_for_input(self):
-        guess = input("Enter a character: ").lower()
+        
+        guess = input("Enter a character or type 'hint' for a hint: ").lower()
 
-        if not guess.isalpha() or len(guess) != 1:
-            print("Invalid letter. Please, enter a single alphabetical character.")
+        if guess == 'hint':
+            return 'hint'  
+        elif not guess.isalpha() or len(guess) != 1:
+            print("Invalid input. Please, enter a single alphabetical character.")
+            return None  
         elif guess in self.list_of_guesses:
             print("You already tried that letter.")
+            return None 
         else:
-            self.check_guess(guess)
+            return guess  
 
-def play_game(word_list):
-    num_lives = 5
-    game = Hangman(word_list, num_lives)
+def play_game(difficulty_level):
+    print(f"Received difficulty level: {difficulty_level}")
+    difficulty = Difficulty('words.json')  
+    word, num_lives = difficulty.get_word_and_lives(difficulty_level)
+    game = Hangman([word], num_lives)
 
-    while True:
-        if game.num_lives == 0:
-            print('You lost!')
-            break
-        elif game.num_letters > 0:
-            game.ask_for_input()
-        else:
+    while game.num_lives > 0 and '_' in game.word_guessed:
+        user_input = game.ask_for_input()
+
+        if user_input == 'hint':
+            game.show_hint()
+        elif user_input:
+            game.check_guess(user_input)
+
+        if game.num_letters == 0:
             print('Congratulations. You won the game!')
             break
+        elif game.num_lives == 0:
+            print('You lost!')
+            break
 
-    print("Exiting play_game function")
+
+    if game.num_lives == 0:
+        print(f"The correct word was: {game.word}")
