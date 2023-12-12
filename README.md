@@ -100,7 +100,9 @@ Key Features:
 #### How to Play:
 
 Run the Hangman game by executing menu.py. Choose to start a new game, learn the rules, or exit the application from the main menu. Guess letters to uncover the hidden word and win the game before running out of lives!
-
+```python
+python menu.py
+```
 
 ## Installation
 Ensure Python is installed on your system. Download and install Python from [python.org](https://www.python.org/downloads/).
