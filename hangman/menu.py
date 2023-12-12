@@ -5,13 +5,11 @@ class Menu:
         self.word_list = ['python', 'hangman', 'programming']
 
     def display(self):
-        print("Rules of Hangman:")
-        print("1. Guess a letter of the word.")
-        print("2. If the letter is in the word, it will be revealed.")
-        print("3. If the letter is not in the word, you lose a life.")
-        print("4. You have 5 lives in total.")
-        print("5. If you lose all lives, you lose the game.")
-        print("6. Guess all letters correctly to win the game.")
+        print("Welcome to Hangman!")
+        print("1. Start Game")
+        print("2. Show Rules")
+        print("3. Exit")
+        return input("Enter your choice (1-3): ")
 
     def show_rules(self):
         print("Rules of Hangman:")
@@ -26,6 +24,7 @@ def main():
     menu = Menu()
     
     while True:
+        print("Back to menu")
         choice = menu.display()
         if choice == '1':
             play_game(menu.word_list)

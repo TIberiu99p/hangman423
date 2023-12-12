@@ -48,3 +48,4 @@ def play_game(word_list):
             print('Congratulations. You won the game!')
             break
 
+    print("Exiting play_game function")
