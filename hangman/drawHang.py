@@ -66,11 +66,11 @@ class HangmanDrawing:
             """
         ]
 
-    def draw(self, stage):
+    def draw(self, stage, word_guessed):
         if stage < len(self.stages):
             print(self.stages[stage])
         else:
             print("No more stages.")
 
-
+        print("Word: " + " ".join(word_guessed))
 

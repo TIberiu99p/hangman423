@@ -16,22 +16,22 @@ class Hangman:
     def check_guess(self, guess):
         if guess in self.word:
             print(f"{guess} is in the word.")
-            first_time_guess = True
             for index, letter in enumerate(self.word):
                 if letter == guess and self.word_guessed[index] == '_':
                     self.word_guessed[index] = guess
-                    if first_time_guess:
-                        self.num_letters -= 1
-                        first_time_guess = False
+
+            print("Word: " + " ".join(self.word_guessed))
+
         else:
             self.num_lives -= 1
             print(f"{guess} is not in the word. Try again.")
             print(f"You have {self.num_lives} lives left.")
             drawing_stage = len(self.hangman_drawing.stages) - self.num_lives - 1
-            self.hangman_drawing.draw(drawing_stage)
+            self.hangman_drawing.draw(drawing_stage, self.word_guessed)
 
         if guess not in self.list_of_guesses:
             self.list_of_guesses.append(guess)
+
 
     def ask_for_input(self):
         
@@ -57,7 +57,7 @@ def play_game(difficulty_level):
     word, num_lives = difficulty.get_word_and_lives(difficulty_level)
     game = Hangman([word], num_lives)
 
-    while game.num_lives > 0 and '_' in game.word_guessed:
+    while game.num_lives > 0:
         user_input = game.ask_for_input()
 
         if user_input == 'hint':
@@ -65,13 +65,13 @@ def play_game(difficulty_level):
         elif user_input:
             game.check_guess(user_input)
 
-        if game.num_letters == 0:
+        # Checking if there are no underscores left in 'self.word_guessed' to declare victory
+        if '_' not in game.word_guessed:
             print('Congratulations. You won the game!')
             break
         elif game.num_lives == 0:
             print('You lost!')
             break
-
 
     if game.num_lives == 0:
         print(f"The correct word was: {game.word}")

@@ -28,12 +28,15 @@ class Menu:
         choice = input("Enter your choice (1-3): ")
         if choice == '1':
             print("Chosen difficulty: easy")
+            print("You can only make 7 mistakes")
             return 'easy'
         elif choice == '2':
             print("Chosen difficulty: medium")
+            print("You can only make 5 mistakes")
             return 'medium'
         elif choice == '3':
             print("Chosen difficulty: hard")
+            print("You can only make 3 mistakes")
             return 'hard'
         else:
             print("Invalid choice. Defaulting to Easy.")
