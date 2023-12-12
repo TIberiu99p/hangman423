@@ -16,17 +16,20 @@ class Hangman:
     def check_guess(self, guess):
         if guess in self.word:
             print(f"{guess} is in the word.")
+            first_time_guess = True
             for index, letter in enumerate(self.word):
                 if letter == guess and self.word_guessed[index] == '_':
                     self.word_guessed[index] = guess
-                    self.num_letters -= 1
+                    if first_time_guess:
+                        self.num_letters -= 1
+                        first_time_guess = False
         else:
             self.num_lives -= 1
             print(f"{guess} is not in the word. Try again.")
             print(f"You have {self.num_lives} lives left.")
             drawing_stage = len(self.hangman_drawing.stages) - self.num_lives - 1
             self.hangman_drawing.draw(drawing_stage)
-            
+
         if guess not in self.list_of_guesses:
             self.list_of_guesses.append(guess)
 
