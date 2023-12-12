@@ -2,11 +2,10 @@
 
 ## Table of Contents
 - [Project Description](#project-description)
-- [Milestone 1](task1)
-- [Milestone 2](task2)
-- [Milestone 3](task3)
+- [Milestones](#milestones)
 - [Latest Updates](#latest-updates)
-- [Hangman Game - Milestone 5 Documentation](#milestone-5)
+- [Gameplay Demonstration](#gameplay-demonstration)
+- [Last Updates to Hangman Game](#latest-updates)
 - [Installation](#installation)
 - [Usage](#usage)
 - [File Structure](#file-structure)
@@ -15,20 +14,12 @@
 ## Project Description
 The **Hangman** game is a Python-based interactive implementation of the classic word guessing game. In this version, the computer selects a word, and the user attempts to guess it by suggesting letters within a limited number of tries. This project showcases skills in Python programming, including functions, loops, conditional statements, and input validation. Key learnings include efficient code organization, handling user input, and implementing game logic.
 
-## Milestone 1
-Environment set up 
-
-## Milestone 2
-Create variables for the game
-`milestone_2.py`
-
-## Milestone 3
-Check if the guessed character is in the word
-`milestone_3.py`
-
-## Milestone 4
-Create the Game class
-`milestone_4py`
+## Milestones
+- **Milestone 1**: Initial Setup
+- **Milestone 2**: Word Selection
+- **Milestone 3**: Game Logic
+- **Milestone 4**: User Interface
+- **Milestone 5**: Difficulty Levels and Hints
 
 ## Latest Updates 
 
@@ -115,15 +106,72 @@ Key Features:
     - `milestone_5.py`: Contains the core game logic and the `Hangman` class.
     - `difficulty.py`: Manages the game's difficulty levels and word selection.
     - `hint.py`: Provides the hint functionality linked with the words.
+    - `drawHang.py`: Draw the hangman
 
 #### JSON Data Structure
 - The `words.json` file has been structured to store words along with their respective difficulty levels and hints, facilitating easy data management.
+
+### Hangman Drawing Feature
+- **New Feature**: The game now includes a dynamic hangman drawing feature. As the player makes incorrect guesses, the hangman drawing progresses, visually representing the player's remaining lives.
+- **Difficulty Integration**: The progression of the hangman drawing is tailored to the chosen difficulty level, with more lives in easier levels resulting in a slower drawing progression.
+
+## Gameplay Demonstration
+Watch a playthrough of our Hangman game on YouTube: [Hangman Game Playthrough](https://www.youtube.com/watch?v=QTLFDCAK0cE)
+
 
 ### Running the Game
 To run the game, navigate to the directory containing the files and execute the following command in your terminal:
 ```python
 python menu.py
 ```
+## Updates to Hangman Game
+
+### Last Modifications in HangmanDrawing Class
+- Updated the `draw` method to accept `word_guessed` as an additional parameter.
+- The method now displays the current state of the word (guessed letters and underscores) under the hangman drawing.
+
+```python
+class HangmanDrawing:
+    # ... existing methods and attributes ...
+
+    def draw(self, stage, word_guessed):
+        # Display the current stage of the hangman
+        print(self.stages[stage])
+        # Display the current state of word guessed
+        print("Word: " + " ".join(word_guessed))
+```
+
+### Modifications in Hangman Class
+#### Updated `check_guess` Method
+- Modified to display only the current state of the word when a correct guess is made.
+- Modified to display only the hangman drawing when an incorrect guess is made.
+
+```python
+def check_guess(self, guess):
+    if guess in self.word:
+        print(f"{guess} is in the word.")
+        for index, letter in enumerate(self.word):
+            if letter == guess and self.word_guessed[index] == '_':
+                self.word_guessed[index] = guess
+
+        # Display only the current state of the word when the guess is correct
+        print("Word: " + " ".join(self.word_guessed))
+
+    else:
+        self.num_lives -= 1
+        print(f"{guess} is not in the word. Try again.")
+        print(f"You have {self.num_lives} lives left.")
+
+        # Calculate the current drawing stage and display only the hangman
+        drawing_stage = len(self.hangman_drawing.stages) - self.num_lives - 1
+        self.hangman_drawing.draw(drawing_stage, self.word_guessed)
+
+    if guess not in self.list_of_guesses:
+        self.list_of_guesses.append(guess)
+```
+
+These changes enhance the player experience by providing clear feedback on their guesses and the current state of the game.
+
 
 ## Installation
 Ensure Python is installed on your system. Download and install Python from [python.org](https://www.python.org/downloads/).
@@ -154,6 +202,7 @@ Follow the on-screen prompts to guess letters in the selected word.
 - `difficulty.py`: allows change of difficulty
 - `words.json`: database for words and hints
 - `README.md`: Documentation of the project.
+- `hangDraw.py`: draws the hangman
 
 ## License
 This project is licensed under [appropriate license]. See the `LICENSE` file for more details.
