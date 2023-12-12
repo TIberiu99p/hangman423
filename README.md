@@ -82,14 +82,25 @@ In Milestone 5 of the Hangman game project, we focused on refining the game logi
 - Enhanced Interaction: The game provides real-time feedback about correct guesses, incorrect guesses, and the remaining number of lives.
 - Endgame Messages: Custom messages are displayed to the user upon winning or losing the game.
 
-#### Usage
-To play the game, run the `milestone_5.py` script. The game will prompt you to guess letters for a randomly chosen word. Your goal is to guess the word before running out of lives.
+
 
 #### Example Invocation:
 ```python
 word_list = ['python', 'hangman', 'programming']
 play_game(word_list)
 ```
+
+### Menu implementation
+Key Features:
+
+- Interactive Menu System: A new menu-driven user interface implemented in menu.py allows users to start the game, view rules, or exit the application seamlessly.
+- Modular Design: The game logic is encapsulated in hangman.py, ensuring clean separation of game mechanics from the user interface.
+- Enhanced User Experience: Improved game flow with clear instructions, input validation, and end-game scenarios, offering an engaging user experience.
+
+#### How to Play:
+
+Run the Hangman game by executing menu.py. Choose to start a new game, learn the rules, or exit the application from the main menu. Guess letters to uncover the hidden word and win the game before running out of lives!
+
 
 ## Installation
 Ensure Python is installed on your system. Download and install Python from [python.org](https://www.python.org/downloads/).
@@ -113,6 +124,9 @@ Follow the on-screen prompts to guess letters in the selected word.
 - `hangman_Template.py`: template for the full hangman
 - `milestone_2.py`: milestone 2 and all of its task
 - `milestone_3.py`: milestone 3 and all of its task
+- `milestone_4.py`: milestone 4 and all of its task
+- `milestone_5.py`: milestone 3 and all of its task
+- `menu.py`: starts the game with a menu
 - `README.md`: Documentation of the project.
 
 ## License
